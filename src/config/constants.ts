@@ -1,0 +1,260 @@
+/**
+ * RESQ Nepal - Core Constants & Seeded Demo Data
+ * Contains Kathmandu hospitals, seeded accounts, demo fleet, and bilingual texts.
+ */
+
+import { Ambulance, AmbulanceTypeConfig, SavedPlace, User } from '../types';
+
+export const AMBULANCE_CATEGORIES: AmbulanceTypeConfig[] = [
+  {
+    id: 'BASIC',
+    name: 'Basic Ambulance',
+    nepaliName: 'सामान्य एम्बुलेन्स',
+    badgeTitle: 'Basic',
+    subtitle: 'Standard transport',
+    description: 'Manual resuscitator, first aid kit, oxygen cylinder, wheelchair & basic stretcher.',
+    baseFareNpr: 100,
+    perKmRateNpr: 40,
+    estimatedArrivalMin: '10-15 मिनेट',
+    iconType: 'basic',
+    features: ['Oxygen 20L', 'Ambu Bag', 'Stretcher', 'Trained EMT Driver'],
+  },
+  {
+    id: 'ADVANCED',
+    name: 'Advanced Ambulance (ALS)',
+    nepaliName: 'उन्नत एम्बुलेन्स',
+    badgeTitle: 'Advanced',
+    subtitle: 'Provider-equipped',
+    description: 'Multipara cardiac monitor, defibrillator, suction unit, scoop stretcher, IV medications.',
+    baseFareNpr: 150,
+    perKmRateNpr: 60,
+    estimatedArrivalMin: '8-12 मिनेट',
+    iconType: 'advanced',
+    features: ['Multipara Cardiac Monitor', 'Biphasic Defibrillator', 'Suction Machine', 'ALS Nurse'],
+  },
+  {
+    id: 'VENTILATOR',
+    name: 'Ventilator-Equipped (CCU/ICU)',
+    nepaliName: 'आईसीयू एम्बुलेन्स',
+    badgeTitle: 'Ventilator',
+    subtitle: 'Where available',
+    description: 'Transport ventilator (Hamilton T1 / Dräger), syringe infusion pumps, advanced life support.',
+    baseFareNpr: 200,
+    perKmRateNpr: 90,
+    estimatedArrivalMin: '15-20 मिनेट',
+    iconType: 'ventilator',
+    features: ['Hamilton T1 Transport Ventilator', 'Syringe Infusion Pumps (x3)', 'Critical Care Paramedic', 'Continuous O2 40L'],
+  },
+];
+
+export const KATHMANDU_HOSPITALS = [
+  {
+    id: 'hosp-tuth',
+    name: 'Tribhuvan University Teaching Hospital (TUTH)',
+    nepaliName: 'त्रिवि शिक्षण अस्पताल (TUTH)',
+    address: 'Maharajgunj, Kathmandu',
+    lat: 27.7374,
+    lng: 85.3312,
+    emergencyHotline: '+977-1-4412404',
+    type: 'Trauma & Multi-specialty',
+  },
+  {
+    id: 'hosp-bir',
+    name: 'Bir Hospital',
+    nepaliName: 'वीर अस्पताल',
+    address: 'Kanti Path, Kathmandu',
+    lat: 27.7055,
+    lng: 85.3135,
+    emergencyHotline: '+977-1-4221119',
+    type: 'Government Apex Trauma Center',
+  },
+  {
+    id: 'hosp-patan',
+    name: 'Patan Hospital (PAHS)',
+    nepaliName: 'पाटन अस्पताल',
+    address: 'Lagankhel, Lalitpur',
+    lat: 27.6685,
+    lng: 85.3218,
+    emergencyHotline: '+977-1-5522295',
+    type: 'Multi-specialty General Hospital',
+  },
+  {
+    id: 'hosp-gangalal',
+    name: 'Shahid Gangalal National Heart Center',
+    nepaliName: 'शहीद गंगालाल राष्ट्रिय हृदय केन्द्र',
+    address: 'Bansbari, Kathmandu',
+    lat: 27.7455,
+    lng: 85.3368,
+    emergencyHotline: '+977-1-4371322',
+    type: 'Cardiac Emergency & CCU',
+  },
+  {
+    id: 'hosp-karuna',
+    name: 'Karuna Hospital',
+    nepaliName: 'करुणा अस्पताल',
+    address: 'Chunikhel / Kapan, Kathmandu',
+    lat: 27.7420,
+    lng: 85.3610,
+    emergencyHotline: '+977-1-4811050',
+    type: 'Emergency & Surgical Center',
+  },
+  {
+    id: 'hosp-kanti',
+    name: "Kanti Children's Hospital",
+    nepaliName: 'कान्ति बाल अस्पताल',
+    address: 'Maharajgunj, Kathmandu',
+    lat: 27.7392,
+    lng: 85.3344,
+    emergencyHotline: '+977-1-4411140',
+    type: 'Pediatric Emergency & PICU',
+  },
+];
+
+export const SUGGESTED_LOCATIONS = [
+  { name: 'TUTH Emergency Trauma Center', address: 'Maharajgunj Sadak, Kathmandu', lat: 27.7374, lng: 85.3312 },
+  { name: 'Bir Hospital Apex Trauma', address: 'Kanti Path, Kathmandu', lat: 27.7055, lng: 85.3135 },
+  { name: 'Patan Hospital (PAHS)', address: 'Lagankhel, Lalitpur', lat: 27.6685, lng: 85.3218 },
+  { name: 'Shahid Gangalal Heart Center', address: 'Bansbari, Kathmandu', lat: 27.7455, lng: 85.3368 },
+  { name: 'Civil Service Hospital', address: 'Minbhawan, Kathmandu', lat: 27.6875, lng: 85.3435 },
+  { name: 'Chunikhel Marg', address: 'Chunikhel Marg (Kapan), Kathmandu', lat: 27.7410, lng: 85.3620 },
+  { name: 'Baneshwor Chowk', address: 'Baneshwor, Kathmandu', lat: 27.6915, lng: 85.3420 },
+  { name: 'Tribhuvan International Airport (KTM)', address: 'Ring Road, Kathmandu', lat: 27.6966, lng: 85.3591 },
+];
+
+export const INITIAL_SAVED_PLACES: SavedPlace[] = [
+  { id: 'sp-1', type: 'home', name: 'Home', address: 'Baneshwor, Kathmandu', lat: 27.6915, lng: 85.3420 },
+  { id: 'sp-2', type: 'work', name: 'Work', address: 'Maharajgunj Sadak, Kathmandu', lat: 27.7345, lng: 85.3325 },
+  { id: 'sp-3', type: 'custom', name: 'Family Clinic', address: 'Lagankhel, Lalitpur', lat: 27.6685, lng: 85.3218 },
+];
+
+// Seeded Users (User Mode and Driver Mode only)
+export const SEEDED_USERS: Record<string, { user: User; passwordHash: string }> = {
+  user: {
+    user: {
+      id: 'usr-manjil',
+      name: 'Manjil Bhandari',
+      phone: '+977-9841234567',
+      email: 'manjil@gmail.com',
+      role: 'user',
+      rating: 4.85,
+      totalTrips: 12,
+      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
+      isDriverApproved: true, // Can switch between user & driver
+    },
+    passwordHash: 'user123',
+  },
+  driver: {
+    user: {
+      id: 'usr-driver-hari',
+      name: 'Hari Sundar Shrestha',
+      phone: '+977-9841883391',
+      email: 'driver.hari@resqnepal.org',
+      role: 'driver',
+      rating: 4.92,
+      totalTrips: 348,
+      avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+      isDriverApproved: true,
+    },
+    passwordHash: 'driver123',
+  },
+};
+
+// Seeded Ambulances stationed around Kathmandu
+export const SEEDED_AMBULANCES: Ambulance[] = [
+  {
+    id: 'amb-1',
+    driverId: 'usr-driver-hari',
+    driverName: 'Hari Sundar Shrestha',
+    driverPhone: '+977-9841883391',
+    vehiclePlate: 'Ba 1 Jha 9021',
+    category: 'BASIC',
+    model: 'Force Motors Traveller 3350',
+    status: 'available',
+    currentLat: 27.6980,
+    currentLng: 85.3440, // ~1.1 km from Baneshwor
+    hospitalAffiliation: 'Tribhuvan University Teaching Hospital (TUTH)',
+    equipment: ['Oxygen 20L', 'Ambu Bag', 'Stretcher'],
+    batteryPercent: 94,
+    isOnline: true,
+  },
+  {
+    id: 'amb-2',
+    driverId: 'drv-suresh',
+    driverName: 'Suresh Thapa Magar',
+    driverPhone: '+977-9841209384',
+    vehiclePlate: 'Ba 2 Pa 4455',
+    category: 'VENTILATOR',
+    model: 'Tata Winger Critical Care ICU',
+    status: 'available',
+    currentLat: 27.7050,
+    currentLng: 85.3280, // ~2.8 km from Baneshwor
+    hospitalAffiliation: 'Shahid Gangalal National Heart Center',
+    equipment: ['Hamilton T1 Transport Ventilator', 'Syringe Pumps', 'Cardiac Monitor'],
+    batteryPercent: 98,
+    isOnline: true,
+  },
+  {
+    id: 'amb-3',
+    driverId: 'drv-balaram',
+    driverName: 'Balaram KC',
+    driverPhone: '+977-9851098471',
+    vehiclePlate: 'Ba 3 Cha 1109',
+    category: 'ADVANCED',
+    model: 'Force Traveller ALS',
+    status: 'available',
+    currentLat: 27.7210,
+    currentLng: 85.3310, // ~4.2 km
+    hospitalAffiliation: 'Bir Hospital',
+    equipment: ['Multipara Cardiac Monitor', 'Biphasic Defibrillator', 'Suction Unit'],
+    batteryPercent: 88,
+    isOnline: true,
+  },
+  {
+    id: 'amb-4',
+    driverId: 'drv-manoj',
+    driverName: 'Manoj Maharjan',
+    driverPhone: '+977-9849201928',
+    vehiclePlate: 'Pra 3-01-022 Cha 4101',
+    category: 'ADVANCED',
+    model: 'Mahindra Bolero Maxi Ambulance',
+    status: 'available',
+    currentLat: 27.7380,
+    currentLng: 85.3320, // ~6.5 km
+    hospitalAffiliation: 'TUTH Emergency Trauma Unit',
+    equipment: ['Cardiac Defibrillator', 'Spine Board', 'Oxygen 30L'],
+    batteryPercent: 92,
+    isOnline: true,
+  },
+  {
+    id: 'amb-5',
+    driverId: 'drv-dinesh',
+    driverName: 'Dinesh Lama',
+    driverPhone: '+977-9855091284',
+    vehiclePlate: 'Ba 2 Cha 8812',
+    category: 'BASIC',
+    model: 'Maruti Suzuki Eeco Medical',
+    status: 'available',
+    currentLat: 27.7420,
+    currentLng: 85.3580, // ~7.8 km near Chunikhel/Kapan
+    hospitalAffiliation: 'Karuna Hospital',
+    equipment: ['Oxygen 20L', 'Ambu Bag', 'First Aid Kit'],
+    batteryPercent: 85,
+    isOnline: true,
+  },
+  {
+    id: 'amb-6',
+    driverId: 'drv-surya',
+    driverName: 'Surya Tamang',
+    driverPhone: '+977-9841339900',
+    vehiclePlate: 'Ba 1 Jha 7701',
+    category: 'BASIC',
+    model: 'Force Traveller BLS',
+    status: 'busy',
+    currentLat: 27.6710,
+    currentLng: 85.3230,
+    hospitalAffiliation: 'Patan Hospital',
+    equipment: ['Oxygen 20L', 'Stretcher'],
+    batteryPercent: 78,
+    isOnline: true,
+  },
+];

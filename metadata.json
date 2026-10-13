@@ -1,0 +1,6 @@
+{
+  "name": "RESQ Nepal - Ambulance Booking & Fleet Management",
+  "description": "A fully functional React Native ambulance booking application with progressive search radius, real-time tracking, driver workflows, and role-based mode switching.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

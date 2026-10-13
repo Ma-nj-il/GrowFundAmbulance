@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "RESQ Nepal",
+    "slug": "resq-nepal",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#181A1F"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.resqnepal.app",
+      "config": {
+        "googleMapsApiKey": ""
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "RESQ Nepal needs your GPS location to dispatch nearby emergency ambulances to your exact coordinates."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#D62828"
+      },
+      "package": "com.resqnepal.app",
+      "config": {
+        "googleMaps": {
+          "apiKey": ""
+        }
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "CALL_PHONE",
+        "VIBRATE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow RESQ Nepal to determine your emergency pickup coordinates."
+        }
+      ]
+    ]
+  }
+}
